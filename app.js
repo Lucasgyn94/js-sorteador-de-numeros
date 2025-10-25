@@ -1,11 +1,18 @@
-const alterarStatusBotao = () => {
+const desativarBotaoReiniciar = () => {
     let botaoReiniciar = document.getElementById("btn-reiniciar");
+
+    if (botaoReiniciar.classList.contains("container__botao")) {
+    botaoReiniciar.classList.remove("container__botao");
+    botaoReiniciar.classList.add("container__botao-desabilitado");
+    }
+}
+
+const ativarBotaoReiniciar = () => {
+    let botaoReiniciar = document.getElementById("btn-reiniciar");
+    
     if (botaoReiniciar.classList.contains("container__botao-desabilitado")) {
         botaoReiniciar.classList.remove("container__botao-desabilitado");
         botaoReiniciar.classList.add("container__botao");
-    } else {
-        botaoReiniciar.classList.add("container__botao-desabilitado");
-        botaoReiniciar.classList.remove("container__botao");
     }
 }
 
@@ -24,6 +31,8 @@ const obterListaDeNumerosAleatorios = (quantidade, minNumero, maxNumero) => {
 const gerarNumeroAleatorio = (minNumero, maxNumero) => {
     return Math.floor(Math.random() * (maxNumero - minNumero + 1)) + minNumero;
 }
+
+/* FUNÇÕES PRINCIPAIS: Sortear e Reiniciar */
 const sortear = () => {
     let quantidade = parseInt(document.getElementById("quantidade").value);
     let minNumero = parseInt(document.getElementById("de").value);
@@ -33,7 +42,7 @@ const sortear = () => {
     let numerosSorteados = obterListaDeNumerosAleatorios(quantidade, minNumero, maxNumero);
     let labelResultado = `<label class="texto__paragrafo">Números sorteados: ${numerosSorteados}</label>`;
     resultado.innerHTML = labelResultado;
-    alterarStatusBotao();
+    ativarBotaoReiniciar();
 }
 
 const reiniciar = () => {
@@ -41,6 +50,6 @@ const reiniciar = () => {
     document.getElementById("de").value = 0;
     document.getElementById("ate").value = 0;
     document.getElementById("resultado").innerHTML = `<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>`;
-    alterarStatusBotao();
+    desativarBotaoReiniciar();
 }
 
