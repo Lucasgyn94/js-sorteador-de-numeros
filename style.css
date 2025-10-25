@@ -58,6 +58,7 @@ body::before {
     flex-direction: column;
 }
 
+
 .container__texto-azul {
     color: #1875E8;
     display: block;
@@ -71,6 +72,20 @@ body::before {
     margin-bottom: 12px;
 }
 
+@media (max-width: 480px) {
+    .container__campo {
+        flex-direction: column;
+    }
+
+    .container__texto h1 {
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .texto__paragrafo {
+        text-align: center;
+    }
+}
 .container__input {
     width: 130px;
     height: 72px;
